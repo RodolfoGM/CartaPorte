@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Detecno" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_IDetecno_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" />
+      <xs:element name="Prueba">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="valor" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PruebaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PruebaResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteGenerar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cerBytes" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="keyBytes" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="passBytes" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteGenerarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteGenerarResult" nillable="true" type="q1:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteCancelar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="facturaId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteCancelarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteCancelarResult" nillable="true" type="q2:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_CancelarUUID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="UUID" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_CancelarUUIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="Comprobante_CancelarUUIDResult" nillable="true" type="q3:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteBuscar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="facturaId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteBuscarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteBuscarResult" nillable="true" type="q4:respuestaXml" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_BuscarPdf">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="facturaId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_BuscarPdfResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="Comprobante_BuscarPdfResult" nillable="true" type="q5:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteGenerarRetencion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cerBytes" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="keyBytes" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="passBytes" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteGenerarRetencionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteGenerarRetencionResult" nillable="true" type="q6:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteBuscarRetencion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="facturaId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteBuscarRetencionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteBuscarRetencionResult" nillable="true" type="q7:respuestaXml" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_BuscarPdfRetencion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="facturaId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_BuscarPdfRetencionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="Comprobante_BuscarPdfRetencionResult" nillable="true" type="q8:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteRetencionCancelar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="facturaId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteRetencionCancelarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteRetencionCancelarResult" nillable="true" type="q9:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteGenerar33">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="cerBytes" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="keyBytes" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="passBytes" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteGenerar33Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteGenerar33Result" nillable="true" type="q10:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteBuscarUUID33">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteBuscarUUID33Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteBuscarUUID33Result" nillable="true" type="q11:respuestaXml" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteBuscar33">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="facturaId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteBuscar33Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteBuscar33Result" nillable="true" type="q12:respuestaXml" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_BuscarPdf33">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="facturaId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_BuscarPdf33Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="Comprobante_BuscarPdf33Result" nillable="true" type="q13:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteCancelar33">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="facturaId" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ComprobanteCancelar33Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="ComprobanteCancelar33Result" nillable="true" type="q14:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_CancelarUUID33">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="UUID" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Comprobante_CancelarUUID33Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="Comprobante_CancelarUUID33Result" nillable="true" type="q15:resultado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Consultafactura_ID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="licencia" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="RfcEmisor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="FechaSolicitud" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Consultafactura_IDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" minOccurs="0" name="Consultafactura_IDResult" nillable="true" type="q16:respuestaXml_ConusltaFacturaId" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/cfdiWcfEmisionServicio.Clases" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="resultado">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CadenaOriginal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditoActual" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditoDisponible" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditoFinal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Emisor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorModule" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FacturaId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PDF64" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Receptor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Uuid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Validate" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="resultado" nillable="true" type="tns:resultado" />
+      <xs:complexType name="respuestaXml">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CadenaOriginal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EstatusId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FacturaId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FacturaIdOriginal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Folio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MontoOperacion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MontoRetencion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Qr" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RechazoId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RfcEmisor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RfcReceptor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sello" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Serie" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Total1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Total2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Uuid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UuidOriginal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Validate" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Xml" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="XmlAcuseCancelacionCfdi" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="respuestaXml" nillable="true" type="tns:respuestaXml" />
+      <xs:complexType name="respuestaXml_ConusltaFacturaId">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrorDesc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FacturaId" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element minOccurs="0" name="Validate" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="respuestaXml_ConusltaFacturaId" nillable="true" type="tns:respuestaXml_ConusltaFacturaId" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IDetecno_Prueba_InputMessage">
+    <wsdl:part name="parameters" element="tns:Prueba" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Prueba_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PruebaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteGenerar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteGenerar" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteGenerar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteGenerarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteCancelar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteCancelar" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteCancelar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteCancelarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_CancelarUUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_CancelarUUID" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_CancelarUUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_CancelarUUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteBuscar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteBuscar" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteBuscar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteBuscarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_BuscarPdf_InputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_BuscarPdf" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_BuscarPdf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_BuscarPdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteGenerarRetencion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteGenerarRetencion" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteGenerarRetencion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteGenerarRetencionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteBuscarRetencion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteBuscarRetencion" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteBuscarRetencion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteBuscarRetencionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_BuscarPdfRetencion_InputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_BuscarPdfRetencion" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_BuscarPdfRetencion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_BuscarPdfRetencionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteRetencionCancelar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteRetencionCancelar" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteRetencionCancelar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteRetencionCancelarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteGenerar33_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteGenerar33" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteGenerar33_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteGenerar33Response" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteBuscarUUID33_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteBuscarUUID33" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteBuscarUUID33_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteBuscarUUID33Response" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteBuscar33_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteBuscar33" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteBuscar33_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteBuscar33Response" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_BuscarPdf33_InputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_BuscarPdf33" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_BuscarPdf33_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_BuscarPdf33Response" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteCancelar33_InputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteCancelar33" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_ComprobanteCancelar33_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ComprobanteCancelar33Response" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_CancelarUUID33_InputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_CancelarUUID33" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Comprobante_CancelarUUID33_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Comprobante_CancelarUUID33Response" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Consultafactura_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:Consultafactura_ID" />
+  </wsdl:message>
+  <wsdl:message name="IDetecno_Consultafactura_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Consultafactura_IDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDetecno">
+    <wsdl:operation name="Prueba">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/Prueba" message="tns:IDetecno_Prueba_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/PruebaResponse" message="tns:IDetecno_Prueba_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteGenerar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteGenerar" message="tns:IDetecno_ComprobanteGenerar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteGenerarResponse" message="tns:IDetecno_ComprobanteGenerar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteCancelar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteCancelar" message="tns:IDetecno_ComprobanteCancelar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteCancelarResponse" message="tns:IDetecno_ComprobanteCancelar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_CancelarUUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/Comprobante_CancelarUUID" message="tns:IDetecno_Comprobante_CancelarUUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/Comprobante_CancelarUUIDResponse" message="tns:IDetecno_Comprobante_CancelarUUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteBuscar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteBuscar" message="tns:IDetecno_ComprobanteBuscar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteBuscarResponse" message="tns:IDetecno_ComprobanteBuscar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_BuscarPdf">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/Comprobante_BuscarPdf" message="tns:IDetecno_Comprobante_BuscarPdf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/Comprobante_BuscarPdfResponse" message="tns:IDetecno_Comprobante_BuscarPdf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteGenerarRetencion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteGenerarRetencion" message="tns:IDetecno_ComprobanteGenerarRetencion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteGenerarRetencionResponse" message="tns:IDetecno_ComprobanteGenerarRetencion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteBuscarRetencion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteBuscarRetencion" message="tns:IDetecno_ComprobanteBuscarRetencion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteBuscarRetencionResponse" message="tns:IDetecno_ComprobanteBuscarRetencion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_BuscarPdfRetencion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/Comprobante_BuscarPdfRetencion" message="tns:IDetecno_Comprobante_BuscarPdfRetencion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/Comprobante_BuscarPdfRetencionResponse" message="tns:IDetecno_Comprobante_BuscarPdfRetencion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteRetencionCancelar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteRetencionCancelar" message="tns:IDetecno_ComprobanteRetencionCancelar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteRetencionCancelarResponse" message="tns:IDetecno_ComprobanteRetencionCancelar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteGenerar33">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteGenerar33" message="tns:IDetecno_ComprobanteGenerar33_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteGenerar33Response" message="tns:IDetecno_ComprobanteGenerar33_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteBuscarUUID33">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteBuscarUUID33" message="tns:IDetecno_ComprobanteBuscarUUID33_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteBuscarUUID33Response" message="tns:IDetecno_ComprobanteBuscarUUID33_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteBuscar33">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteBuscar33" message="tns:IDetecno_ComprobanteBuscar33_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteBuscar33Response" message="tns:IDetecno_ComprobanteBuscar33_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_BuscarPdf33">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/Comprobante_BuscarPdf33" message="tns:IDetecno_Comprobante_BuscarPdf33_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/Comprobante_BuscarPdf33Response" message="tns:IDetecno_Comprobante_BuscarPdf33_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteCancelar33">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/ComprobanteCancelar33" message="tns:IDetecno_ComprobanteCancelar33_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/ComprobanteCancelar33Response" message="tns:IDetecno_ComprobanteCancelar33_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_CancelarUUID33">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/Comprobante_CancelarUUID33" message="tns:IDetecno_Comprobante_CancelarUUID33_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/Comprobante_CancelarUUID33Response" message="tns:IDetecno_Comprobante_CancelarUUID33_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Consultafactura_ID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDetecno/Consultafactura_ID" message="tns:IDetecno_Consultafactura_ID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDetecno/Consultafactura_IDResponse" message="tns:IDetecno_Consultafactura_ID_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_IDetecno" type="tns:IDetecno">
+    <wsp:PolicyReference URI="#WSHttpBinding_IDetecno_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Prueba">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/Prueba" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteGenerar">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteGenerar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteCancelar">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteCancelar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_CancelarUUID">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/Comprobante_CancelarUUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteBuscar">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteBuscar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_BuscarPdf">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/Comprobante_BuscarPdf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteGenerarRetencion">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteGenerarRetencion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteBuscarRetencion">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteBuscarRetencion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_BuscarPdfRetencion">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/Comprobante_BuscarPdfRetencion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteRetencionCancelar">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteRetencionCancelar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteGenerar33">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteGenerar33" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteBuscarUUID33">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteBuscarUUID33" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteBuscar33">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteBuscar33" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_BuscarPdf33">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/Comprobante_BuscarPdf33" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComprobanteCancelar33">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/ComprobanteCancelar33" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Comprobante_CancelarUUID33">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/Comprobante_CancelarUUID33" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consultafactura_ID">
+      <soap12:operation soapAction="http://tempuri.org/IDetecno/Consultafactura_ID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Detecno">
+    <wsdl:port name="WSHttpBinding_IDetecno" binding="tns:WSHttpBinding_IDetecno">
+      <soap12:address location="https://emision.emisiondetecno.mx/Detecno/WebService_EmisionServicio/detecno.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://emision.emisiondetecno.mx/Detecno/WebService_EmisionServicio/detecno.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
