@@ -26,6 +26,7 @@ namespace CARTAPORTE
         static string calle;
         static string local;
         static int bandera1;
+        static int Variable;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -221,7 +222,7 @@ namespace CARTAPORTE
                 limpia_Modal();
 
 
-                Response.Write("<script>alert('SE MODIFICO EL CLIENTE CORRECTAMENTE');</script>");
+                Response.Write("<script>alert('SE MODIFICO EL CLIENTE CORRECTAMENTE ');</script>");
 
 
             }
